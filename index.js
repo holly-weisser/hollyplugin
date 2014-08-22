@@ -12,7 +12,7 @@ var path = require('path');
 			path: '/holly/{name}',
             config: {
                 handler: function (req, reply) {
-                    reply('this is a test!'+req.params.name);
+                    reply('this is a test! '+req.params.name);
                 },
                 auth:false,
                 plugins: {hal:{api:'hp:holly'}}
