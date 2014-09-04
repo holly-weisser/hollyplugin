@@ -19,7 +19,7 @@ angular.module('informer')
     .config(function ($stateProvider) {
         $stateProvider.state('test', {
             url: '/holly/{name}',
-            templateUrl: '/components/views/test-tpl.html',
+            templateUrl: '/hollyplugin/components/views/test-tpl.html',
             controller: 'TestCtrl as ctrl',
             resolve: {
                 value: function(api, $stateParams){
@@ -34,7 +34,7 @@ angular.module('informer')
     .config(function ($stateProvider) {
         $stateProvider.state('main', {
             url:'/holly',
-            templateUrl:'/components/views/main-tpl.html',
+            templateUrl:'/hollyplugin/components/views/main-tpl.html',
             controller: 'MainCtrl as mainCtrl',
             resolve: {
                 toDisplay: function(api) {
