@@ -1,0 +1,80 @@
+<ent-header>
+    <title-section title="Informer Chat" description="Because, why not?">
+    </title-section>
+</ent-header>
+<div class="ui grid">
+    <div class="thirteen wide column">
+        <div class="ui segment" style="height: 600px !important; overflow: scroll">
+            <h3 class="ui header">Chat</h3>
+            <div class="ui horizontal icon divider">
+                <i class="circular chat icon"></i>
+            </div>
+                <div ng-if="ctrl.getMessages().length>0" class="ui medium list">
+                    <div class="ui segment" ng-class="colorClasses[fullMessage.color]" ng-repeat="fullMessage in fullMessages">
+                        ({{fullMessage.date | date : 'mediumTime'}}) {{fullMessage.user}} : {{fullMessage.message}}
+                    </div>
+                </div>
+        </div>
+        <div class="ui fluid action input">
+            <input type="text" placeholder="Enter message..." ng-model="ctrl.message" ng-keypress="ctrl.keyPress($event)" required>
+            <div class="ui green right labeled icon button" ng-click="ctrl.validMessage() && ctrl.sendMessage()"><i class="comment icon"></i> Send</div>
+        </div><br>
+        <div ng-if="!ctrl.isValidMessage" class="ui animate bottom">
+            <div class="ui small red message"><i class="icon warning"></i> {{ctrl.supplyMessage}}</div>
+        </div>
+    </div>
+    <div class="three wide column">
+        <div class="ui segment" style="height: 300px !important; overflow: scroll"><b>User List</b>
+            <div class="ui middle aligned ten column grid">
+            <div class="ui two wide column">
+            <div class="ui small list">
+               <div class="animate nga-fadeIn item" ng-repeat="user in currentUsers">
+                   <i class="user icon" ng-class="getUserIconColor(user)"></i>
+               </div>
+            </div>
+            </div>
+                <div class="ui eight wide column">
+            <div class="ui small list">
+                <div class="animate nga-fadeIn item" ng-repeat="user in currentUsers">
+                    {{user.chatName}}
+                </div>
+            </div>
+                    </div>
+            </div>
+        </div>
+        <div class="ui segment"><b>Chat Options</b><br><br>
+            <div class="ui fluid icon input">
+                <input type="text" placeholder="Enter new username" ng-model="ctrl.newUsername" required>
+                    <div class="ui green right icon button" ng-click="ctrl.validUsername() && ctrl.changeUsername()"><i class="user icon"></i></div>
+            </div>
+            <div ng-if="!ctrl.isUsernameValid" class="ui animate bottom">
+                <br>
+                <div class="ui small red message"><i class="icon warning"></i> {{ctrl.supplyUsername}}</div>
+            </div>
+            <br>
+            <div class="ui middle aligned two column grid">
+                <div class="row">
+                    <div class="column one">
+                        Message color:
+                    </div>
+                    <div class="column two">
+                        <div class="ui selection dropdown" ng-class="{visible:visible1}" ng-click="visible1=!visible1">
+                            <input type="hidden" name="colorSelect" value="0" required>
+                            <div class="text">{{userSelectedColor}}</div>
+                            <i class="dropdown icon"></i>
+                            <div class="menu transition hidden">
+                                <div data-value="{{color}}" class="item" ng-repeat="color in colorOptions" ng-click="selectColor(color)">
+                                    {{color}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <div class="fluid ui button" ng-click="ctrl.clearMessages()">Clear chat messages
+            </div><br>
+            <div class="fluid ui button" ng-click="ctrl.toggleAway()">{{ctrl.awayButtonText}}
+            </div>
+        </div>
+    </div>
+</div>

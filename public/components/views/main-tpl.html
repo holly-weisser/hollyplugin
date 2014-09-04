@@ -1,0 +1,29 @@
+<ent-header>
+    <title-section title="Holly's Plugin" description="This should be fun.">
+    </title-section>
+</ent-header>
+
+<div class="ui grid">
+    <div class="five wide column"></div>
+    <div class="six wide column">
+        <br>
+        <div class="ui raised segment">
+            <div class="ui purple ribbon label">Welcome!</div><br><br>
+
+            Hi, {{mainCtrl.userDisplayName}}!<br><br>
+
+            To enter the Informer chat room, click the button below.<br><br>
+
+            <div class="ui purple ribbon label">Chat Rules:</div><br><br>
+            <i class="small heart icon"></i>  No profanity.<br>
+            <i class="small heart icon"></i>  Do not share ANY sensitive information.<br>
+            <i class="small heart icon"></i>  Use common sense.<br>
+            <i class="small heart icon"></i>  Have fun!
+            <br><br>
+        <div class="green ui button" ng-click="mainCtrl.goToTestState()">
+        Enter <i class="right arrow icon"></i>
+        </div>
+        </div>
+    </div>
+    <div class="five wide column"></div>
+</div>
